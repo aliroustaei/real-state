@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { Box, Flex, Text, Icon } from "@chakra-ui/react";
-import noResult from "../assets/images/noResult.svg";
+import noResult from "../assets/images/noresult.svg";
 import { BsSearch } from "react-icons/bs";
 //Api
 import { fetchApi } from "../utils/fetchApi";
