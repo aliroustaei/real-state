@@ -4,6 +4,8 @@ import NProgress from "nprogress";
 import { ChakraProvider } from "@chakra-ui/react";
 //component
 import Layout from "../components/Layout";
+//Styles
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   NProgress.configure({ showSpinner: false });

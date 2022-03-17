@@ -1,15 +1,17 @@
-import bannerImage from "../assets/images/banner.jpg";
+import buyHome from "../assets/images/buyhome.jpg";
+import rentHome from "../assets/images/renthome.jpg";
 import { Box, Flex } from "@chakra-ui/react";
 //components
 import Banner from "../components/Banner";
 import Property from "../components/Property";
+import MainBanner from "../components/MainBanner";
 //Api
 import { fetchApi } from "../utils/fetchApi";
 
 export default function Home({ propertiesForRent, propertiesForSale }) {
-  console.log(propertiesForRent, propertiesForSale);
   return (
     <Box>
+      <MainBanner />
       <Banner
         content="RENT A HOME"
         title1="Rental Homes for"
@@ -18,13 +20,15 @@ export default function Home({ propertiesForRent, propertiesForSale }) {
         desc2="and more"
         buttonText="Explore Renting"
         linkName="/search?purpose=for-rent"
-        imageUrl={bannerImage}
+        imageUrl={rentHome}
       />
-      <Flex flexWrap="wrap" justifyContent="center">
-        {propertiesForRent.map((property) => (
-          <Property property={property} key={property.id} />
-        ))}
-      </Flex>
+      <div className="container">
+        <Flex flexWrap="wrap" justifyContent="center">
+          {propertiesForRent.map((property) => (
+            <Property property={property} key={property.id} />
+          ))}
+        </Flex>
+      </div>
       <Banner
         content="BUY A HOME"
         title1=" Find, Buy & Own Your"
@@ -33,13 +37,15 @@ export default function Home({ propertiesForRent, propertiesForSale }) {
         desc2=" villas and more"
         buttonText="Explore Buying"
         linkName="/search?purpose=for-sale"
-        imageUrl={bannerImage}
+        imageUrl={buyHome}
       />
-      <Flex flexWrap="wrap" justifyContent="center">
-        {propertiesForSale.map((property) => (
-          <Property property={property} key={property.id} />
-        ))}
-      </Flex>
+      <div className="container">
+        <Flex flexWrap="wrap" justifyContent="center">
+          {propertiesForSale.map((property) => (
+            <Property property={property} key={property.id} />
+          ))}
+        </Flex>
+      </div>
     </Box>
   );
 }

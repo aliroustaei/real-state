@@ -1,7 +1,15 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { Box, Flex, Text, Icon } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Text,
+  Icon,
+  Collapse,
+  Button,
+  Center,
+} from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import noResult from "../assets/images/noresult.svg";
 import { BsSearch } from "react-icons/bs";
 //Api
@@ -11,28 +19,32 @@ import SearchFilters from "../components/SearchFilters";
 import Property from "../components/Property";
 
 const Search = ({ properties }) => {
-  const [searchFilters, setSearchFilters] = useState(false);
+  const { isOpen, onToggle } = useDisclosure();
   const router = useRouter();
   return (
-    <Box>
-      <Flex
-        onClick={() => setSearchFilters(!searchFilters)}
-        cursor="pointer"
-        bg="gray.100"
-        borderBottom="1px"
-        borderColor="gray.200"
-        p="2"
-        fontWeight="bold"
-        fontSize="lg"
-        justifyContent="center"
-        alignItems="center"
-        marginTop="10"
-        rounded="10"
-      >
-        <Text>Search Property By Filters</Text>
-        <Icon paddingLeft="2" w="7" as={BsSearch} />
-      </Flex>
-      {searchFilters && <SearchFilters />}
+    <Box className="container" mt="50px">
+      <Center width="full">
+        <Button
+          rightIcon={<BsSearch />}
+          onClick={onToggle}
+          boxShadow="xl"
+          bg="blue.600"
+          color="#fdfdfd"
+          border="2px solid #2b6cb0"
+          size="lg"
+          _hover={{
+            bg: "transparent",
+            border: "2px solid #2b6cb0",
+            color: "#2b6cb0",
+          }}
+          _focus={{}}
+        >
+          Search Property By Filters
+        </Button>
+      </Center>
+      <Collapse in={isOpen} animateOpacity>
+        <SearchFilters />
+      </Collapse>
       <Text fontSize="2xl" p="4" fontWeight="bold">
         Property {router.query.purpose}
       </Text>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Box, Flex, Text, Avatar } from "@chakra-ui/react";
+import { Box, Flex, Text, Avatar, Tooltip } from "@chakra-ui/react";
 import { FaBed, FaBath } from "react-icons/fa";
 import { BsGridFill } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
@@ -68,11 +68,13 @@ const Property = ({
             {rooms}
             <FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill />
           </Flex>
-          <Text fontSize="lg" fontWeight="medium">
-            {title.length > 30
-              ? title.substring(0, 40).toLowerCase() + " ..."
-              : title}
-          </Text>
+          <Tooltip label={title} bg="blue.600">
+            <Text fontSize="lg" fontWeight="medium">
+              {title.length > 30
+                ? title.substring(0, 35).toLowerCase() + " ..."
+                : title}
+            </Text>
+          </Tooltip>
         </Box>
       </Flex>
     </Link>

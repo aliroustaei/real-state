@@ -24,16 +24,17 @@ const SearchFilters = () => {
 
   return (
     <Flex
-      bg="gray.100"
       p="4"
-      marginTop="3"
+      marginTop="10"
       justifyContent="center"
       flexWrap="wrap"
       rounded="10"
+      border="solid 2px #2b6cb0"
     >
       {filters?.map((filter) => (
         <Box key={filter.queryName}>
           <Select
+            borderColor="gray.400"
             onChange={(e) =>
               searchProperties({ [filter.queryName]: e.target.value })
             }

@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       <Head>
         <title>Real State App</title>
       </Head>
-      <Box maxWidth="1280px" m="auto">
+      <Box m="auto" position="relative">
         <header>
           <Navbar />
         </header>
